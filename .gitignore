@@ -27,3 +27,7 @@ python/build/
 python/dist/
 python/kubernetes_mcp_server.egg-info/
 !python/kubernetes-mcp-server
+
+.gevals-step*
+gevals-kubevirt-vm-operations-out.json
+.gemini

@@ -1,0 +1,10 @@
+kind: Agent
+metadata:
+  name: "gemini"
+commands:
+  useVirtualHome: false
+  argTemplateMcpServer: "{{ .File }}"
+  argTemplateAllowedTools: "{{ .ToolName }}"
+  allowedToolsJoinSeparator: ","
+  runPrompt: |-
+    pkg/toolsets/kubevirt/tests/gemini/gemini-agent-wrapper.sh {{ .McpServerFileArgs }} "{{ .AllowedToolArgs }}" "{{ .Prompt }}"
