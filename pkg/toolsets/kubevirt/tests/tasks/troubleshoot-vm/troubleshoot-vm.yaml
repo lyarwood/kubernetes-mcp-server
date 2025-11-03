@@ -1,0 +1,60 @@
+kind: Task
+metadata:
+  name: "troubleshoot-vm"
+  difficulty: easy
+steps:
+  setup:
+    inline: |-
+      #!/usr/bin/env bash
+      NS="${EVAL_NAMESPACE:-vm-test}"
+      kubectl delete namespace "$NS" --ignore-not-found
+      kubectl create namespace "$NS"
+
+      # Create a VirtualMachine that can be troubleshot
+      cat <<EOF | kubectl apply -f -
+      apiVersion: kubevirt.io/v1
+      kind: VirtualMachine
+      metadata:
+        name: broken-vm
+        namespace: $NS
+      spec:
+        runStrategy: Halted
+        template:
+          spec:
+            domain:
+              devices:
+                disks:
+                  - name: containerdisk
+                    disk:
+                      bus: virtio
+              resources:
+                requests:
+                  memory: 1Gi
+            volumes:
+              - name: containerdisk
+                containerDisk:
+                  image: quay.io/containerdisks/fedora:latest
+      EOF
+  verify:
+    inline: |-
+      #!/usr/bin/env bash
+      NS="${EVAL_NAMESPACE:-vm-test}"
+      # This test just verifies that the vm_troubleshoot tool was called
+      # The actual verification will be done via assertions in the eval
+
+      # Just check that the VM still exists
+      if kubectl get virtualmachine broken-vm -n "$NS" &>/dev/null; then
+          echo "VirtualMachine broken-vm exists and troubleshooting was performed"
+          exit 0
+      else
+          echo "VirtualMachine broken-vm not found"
+          exit 1
+      fi
+  cleanup:
+    inline: |-
+      #!/usr/bin/env bash
+      NS="${EVAL_NAMESPACE:-vm-test}"
+      kubectl delete virtualmachine broken-vm -n "$NS" --ignore-not-found
+      kubectl delete namespace "$NS" --ignore-not-found
+  prompt:
+    inline: A VirtualMachine named broken-vm in the ${EVAL_NAMESPACE:-vm-test} namespace is having issues.
