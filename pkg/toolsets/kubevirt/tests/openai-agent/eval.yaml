@@ -1,0 +1,14 @@
+kind: Eval
+metadata:
+  name: "openai-kubevirt-vm-operations"
+config:
+  agentFile: agent.yaml
+  mcpConfigFile: ../mcp-config.yaml
+  taskSets:
+    - glob: ../tasks/*/*.yaml
+      assertions:
+        toolsUsed:
+          - server: kubernetes
+            toolPattern: "(vm_create|vm_troubleshoot|resources_.*)"
+        minToolCalls: 1
+        maxToolCalls: 30
