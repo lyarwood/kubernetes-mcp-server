@@ -352,7 +352,7 @@ run_eval() {
 
     # Construct the command
     local cmd=(
-        "gevals" "run"
+        "gevals" "eval"
         "$SCRIPT_DIR/$agent_type/eval.yaml"
     )
 
