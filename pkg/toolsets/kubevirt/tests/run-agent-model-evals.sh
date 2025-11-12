@@ -17,6 +17,7 @@ source "$SCRIPT_DIR/model-configs.sh"
 # Default values
 OUTPUT_DIR="$SCRIPT_DIR/results"
 OUTPUT_PREFIX=""
+RUN_PATTERN=""
 VERBOSE=false
 DRY_RUN=false
 VALIDATE_KEYS_ONLY=false
@@ -49,6 +50,7 @@ Options:
                             Format: agent-type or agent-type/model-name
   -o, --output-dir DIR      Directory to store results (default: ./results)
   -p, --prefix PREFIX       Prefix for output files (default: none)
+  -r, --run PATTERN         Regular expression to match task names to run (like go test -run)
   -v, --verbose             Enable verbose output
   --dry-run                 Print commands without executing them
   --validate-secrets        Only validate that model secrets are available
@@ -78,6 +80,9 @@ Examples:
   # Limit parallel jobs to 2 at a time
   $0 -a openai-agent/gemini-2.0-flash -a gemini --parallel -j 2
 
+  # Run only specific tasks matching a pattern (like go test -run)
+  $0 -a openai-agent/gemini-2.0-flash --run "create-vm"
+
   # Validate secrets for models used in combinations
   $0 -a openai-agent/gemini-2.0-flash -a openai-agent/claude-sonnet-4@20250514 --validate-secrets
 
@@ -96,6 +101,10 @@ EOF
             ;;
         -p|--prefix)
             OUTPUT_PREFIX="$2"
+            shift 2
+            ;;
+        -r|--run)
+            RUN_PATTERN="$2"
             shift 2
             ;;
         -v|--verbose)
@@ -355,6 +364,11 @@ run_eval() {
         "gevals" "eval"
         "$SCRIPT_DIR/$agent_type/eval.yaml"
     )
+
+    # Add --run flag if pattern is specified
+    if [ -n "$RUN_PATTERN" ]; then
+        cmd+=("--run" "$RUN_PATTERN")
+    fi
 
     # Export namespace environment variable
     export EVAL_NAMESPACE="$eval_namespace"
