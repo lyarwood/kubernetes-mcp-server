@@ -218,3 +218,62 @@ verify_has_resources_or_instancetype() {
         return 1
     fi
 }
+
+# verify_cpu_cores: Verifies that a VM has the expected number of CPU cores
+# Usage: verify_cpu_cores <vm-name> <namespace> <expected-cores>
+verify_cpu_cores() {
+    local vm_name="$1"
+    local namespace="$2"
+    local expected_cores="$3"
+
+    local cpu_cores
+    cpu_cores=$(kubectl get virtualmachine "$vm_name" -n "$namespace" -o jsonpath='{.spec.template.spec.domain.cpu.cores}')
+
+    if [[ -z "$cpu_cores" ]]; then
+        echo "✗ VirtualMachine has no CPU cores specification"
+        kubectl get virtualmachine "$vm_name" -n "$namespace" -o yaml | grep -A 5 "cpu:"
+        return 1
+    fi
+
+    if [[ "$cpu_cores" -eq "$expected_cores" ]]; then
+        echo "✓ VirtualMachine has expected CPU cores: $cpu_cores"
+        return 0
+    else
+        echo "✗ Expected $expected_cores CPU cores, found: $cpu_cores"
+        return 1
+    fi
+}
+
+# verify_memory_increased: Verifies that VM memory is greater than the original value
+# Usage: verify_memory_increased <vm-name> <namespace> <original-memory>
+# Example: verify_memory_increased test-vm vm-test "2Gi"
+verify_memory_increased() {
+    local vm_name="$1"
+    local namespace="$2"
+    local original_memory="$3"
+
+    local current_memory
+    current_memory=$(kubectl get virtualmachine "$vm_name" -n "$namespace" -o jsonpath='{.spec.template.spec.domain.memory.guest}')
+
+    if [[ -z "$current_memory" ]]; then
+        echo "✗ VirtualMachine has no memory specification"
+        kubectl get virtualmachine "$vm_name" -n "$namespace" -o yaml | grep -A 5 "memory:"
+        return 1
+    fi
+
+    # Convert memory values to bytes for comparison
+    # This is a simple comparison that handles Gi, Mi, Ki suffixes
+    local original_bytes
+    local current_bytes
+
+    original_bytes=$(echo "$original_memory" | sed 's/Gi/*1073741824/;s/Mi/*1048576/;s/Ki/*1024/;s/G/*1000000000/;s/M/*1000000/;s/K/*1000/' | bc 2>/dev/null || echo "0")
+    current_bytes=$(echo "$current_memory" | sed 's/Gi/*1073741824/;s/Mi/*1048576/;s/Ki/*1024/;s/G/*1000000000/;s/M/*1000000/;s/K/*1000/' | bc 2>/dev/null || echo "0")
+
+    if [[ "$current_bytes" -gt "$original_bytes" ]]; then
+        echo "✓ VirtualMachine memory increased from $original_memory to $current_memory"
+        return 0
+    else
+        echo "✗ Expected memory greater than $original_memory, found: $current_memory"
+        return 1
+    fi
+}

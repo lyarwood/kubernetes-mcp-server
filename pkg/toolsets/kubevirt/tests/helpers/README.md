@@ -151,6 +151,36 @@ verify_has_resources_or_instancetype "my-vm" "vm-test" || exit 1
 
 **Note:** Fails only if neither instancetype nor direct resources are present.
 
+---
+
+### verify_cpu_cores
+Verifies that a VM has the expected number of CPU cores.
+
+**Usage:** `verify_cpu_cores <vm-name> <namespace> <expected-cores>`
+
+**Example:**
+```bash
+verify_cpu_cores "my-vm" "vm-test" 2 || exit 1
+verify_cpu_cores "my-vm" "vm-test" 4 || exit 1
+```
+
+**Note:** This function checks the direct CPU specification in `spec.template.spec.domain.cpu.cores`. For VMs using instancetypes, CPU is defined by the instancetype itself.
+
+---
+
+### verify_memory_increased
+Verifies that VM memory is greater than the original value.
+
+**Usage:** `verify_memory_increased <vm-name> <namespace> <original-memory>`
+
+**Examples:**
+```bash
+verify_memory_increased "my-vm" "vm-test" "2Gi" || exit 1
+verify_memory_increased "my-vm" "vm-test" "4096Mi" || exit 1
+```
+
+**Note:** This function compares memory values in bytes, supporting Gi, Mi, Ki, G, M, K suffixes. It fails if current memory is not greater than the original value.
+
 ## Design Principles
 
 1. **Flexible matching**: Functions use pattern matching instead of exact volume names to handle different VM creation approaches.
