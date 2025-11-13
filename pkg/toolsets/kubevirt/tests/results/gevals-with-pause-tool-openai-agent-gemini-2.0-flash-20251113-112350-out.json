@@ -1,0 +1,77 @@
+[
+  {
+    "taskName": "pause-vm",
+    "taskPath": "/home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/tasks/pause-vm/pause-vm.yaml",
+    "taskPassed": true,
+    "taskOutput": "Using MCP server URL: http://localhost:36333/mcp\nCreating AI agent with modelName: gemini-2.0-flash\nConnecting to MCP server: http://localhost:36333/mcp\nRunning agent with prompt: Please pause the virtual machine named paused-vm in the openai-agent-gemini-2-0-flash-20251113-112350-b6928036 namespace.\n\n\nAgent Response:\n==================================================\nThe virtual machine named paused-vm in the openai-agent-gemini-2-0-flash-20251113-112350-b6928036 namespace has been paused successfully.\n\n",
+    "difficulty": "medium",
+    "assertionResults": {
+      "toolsUsed": {
+        "passed": true
+      },
+      "minToolCalls": {
+        "passed": true
+      },
+      "maxToolCalls": {
+        "passed": true
+      }
+    },
+    "allAssertionsPassed": true,
+    "callHistory": {
+      "ToolCalls": [
+        {
+          "serverName": "kubernetes",
+          "timestamp": "2025-11-13T11:24:03.356192689Z",
+          "success": true,
+          "name": "vm_pause",
+          "request": {
+            "Session": {},
+            "Params": {
+              "name": "vm_pause",
+              "arguments": {
+                "name": "paused-vm",
+                "namespace": "openai-agent-gemini-2-0-flash-20251113-112350-b6928036"
+              }
+            },
+            "Extra": {
+              "TokenInfo": null,
+              "Header": {
+                "Accept": [
+                  "application/json, text/event-stream"
+                ],
+                "Accept-Encoding": [
+                  "gzip"
+                ],
+                "Content-Length": [
+                  "177"
+                ],
+                "Content-Type": [
+                  "application/json"
+                ],
+                "Mcp-Protocol-Version": [
+                  "2025-06-18"
+                ],
+                "Mcp-Session-Id": [
+                  "NROGVLIWWC2TZVE37OY2GZ23NJ"
+                ],
+                "User-Agent": [
+                  "Go-http-client/1.1"
+                ]
+              }
+            }
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "VirtualMachineInstance openai-agent-gemini-2-0-flash-20251113-112350-b6928036/paused-vm paused successfully"
+              }
+            ]
+          }
+        }
+      ],
+      "ResourceReads": null,
+      "PromptGets": null
+    }
+  }
+]

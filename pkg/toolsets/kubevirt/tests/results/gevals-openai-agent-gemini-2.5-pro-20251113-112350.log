@@ -1,0 +1,39 @@
+Starting evaluation at Thu 13 Nov 11:23:50 GMT 2025...
+
+
+=== Starting Evaluation ===
+
+Task: pause-vm
+  Difficulty: medium
+  → Running agent...
+  → Verifying results...
+  ✓ Task passed
+
+=== Evaluation Complete ===
+
+📄 Results saved to: gevals-openai-kubevirt-vm-operations-out.json
+
+=== Results Summary ===
+
+Task: pause-vm
+  Path: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/tasks/pause-vm/pause-vm.yaml
+  Difficulty: medium
+  Task Status: PASSED
+  Assertions: PASSED (3/3)
+
+=== Overall Statistics ===
+Total Tasks: 1
+Tasks Passed: 1/1
+Assertions Passed: 3/3
+
+=== Statistics by Difficulty ===
+
+medium:
+  Tasks: 1/1
+  Assertions: 3/3
+
+SUCCESS: All tests passed
+Duration: 0m 36s (36s total)
+Generating view output from JSON...
+Warning: Failed to generate view output from JSON
+Moved output file to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-openai-agent-gemini-2.5-pro-20251113-112350-out.json

@@ -1,0 +1,89 @@
+[
+  {
+    "taskName": "pause-vm",
+    "taskPath": "/home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/tasks/pause-vm/pause-vm.yaml",
+    "taskPassed": true,
+    "taskOutput": "The virtual machine \"paused-vm\" in namespace \"claude-code-20251113-112350-ee85b8d0\" has been paused successfully.\n",
+    "difficulty": "medium",
+    "assertionResults": {
+      "toolsUsed": {
+        "passed": true
+      },
+      "minToolCalls": {
+        "passed": true
+      },
+      "maxToolCalls": {
+        "passed": true
+      }
+    },
+    "allAssertionsPassed": true,
+    "callHistory": {
+      "ToolCalls": [
+        {
+          "serverName": "kubernetes",
+          "timestamp": "2025-11-13T11:24:07.336651529Z",
+          "success": true,
+          "name": "vm_pause",
+          "request": {
+            "Session": {},
+            "Params": {
+              "_meta": {
+                "claudecode/toolUseId": "toolu_vrtx_01CS8ceM7KwNDbZVB1NMRagq"
+              },
+              "name": "vm_pause",
+              "arguments": {
+                "namespace": "claude-code-20251113-112350-ee85b8d0",
+                "name": "paused-vm"
+              }
+            },
+            "Extra": {
+              "TokenInfo": null,
+              "Header": {
+                "Accept": [
+                  "application/json, text/event-stream"
+                ],
+                "Accept-Encoding": [
+                  "gzip, deflate"
+                ],
+                "Accept-Language": [
+                  "*"
+                ],
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Content-Length": [
+                  "230"
+                ],
+                "Content-Type": [
+                  "application/json"
+                ],
+                "Mcp-Protocol-Version": [
+                  "2025-06-18"
+                ],
+                "Mcp-Session-Id": [
+                  "NNSL4NWLVB3VFXORHAR2AGCNGR"
+                ],
+                "Sec-Fetch-Mode": [
+                  "cors"
+                ],
+                "User-Agent": [
+                  "claude-code/2.0.31"
+                ]
+              }
+            }
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "VirtualMachineInstance claude-code-20251113-112350-ee85b8d0/paused-vm paused successfully"
+              }
+            ]
+          }
+        }
+      ],
+      "ResourceReads": null,
+      "PromptGets": null
+    }
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "taskName": "pause-vm",
+    "taskPath": "/home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/tasks/pause-vm/pause-vm.yaml",
+    "taskPassed": true,
+    "taskOutput": "Using MCP server URL: http://localhost:39835/mcp\nCreating AI agent with modelName: Granite-3.3-8B-Instruct\nConnecting to MCP server: http://localhost:39835/mcp\nRunning agent with prompt: Please pause the virtual machine named paused-vm in the openai-agent-granite-3-3-8b-instruct-20251113-112350-62550185 namespace.\n\n\nAgent Response:\n==================================================\nThe VirtualMachine named 'paused-vm' in the 'openai-agent-granite-3-3-8b-instruct-20251113-112350-62550185' namespace has been paused successfully.\n",
+    "difficulty": "medium",
+    "assertionResults": {
+      "toolsUsed": {
+        "passed": true
+      },
+      "minToolCalls": {
+        "passed": true
+      },
+      "maxToolCalls": {
+        "passed": true
+      }
+    },
+    "allAssertionsPassed": true,
+    "callHistory": {
+      "ToolCalls": [
+        {
+          "serverName": "kubernetes",
+          "timestamp": "2025-11-13T11:24:10.332062661Z",
+          "success": true,
+          "name": "vm_pause",
+          "request": {
+            "Session": {},
+            "Params": {
+              "name": "vm_pause",
+              "arguments": {
+                "name": "paused-vm",
+                "namespace": "openai-agent-granite-3-3-8b-instruct-20251113-112350-62550185"
+              }
+            },
+            "Extra": {
+              "TokenInfo": null,
+              "Header": {
+                "Accept": [
+                  "application/json, text/event-stream"
+                ],
+                "Accept-Encoding": [
+                  "gzip"
+                ],
+                "Content-Length": [
+                  "184"
+                ],
+                "Content-Type": [
+                  "application/json"
+                ],
+                "Mcp-Protocol-Version": [
+                  "2025-06-18"
+                ],
+                "Mcp-Session-Id": [
+                  "KNEV74NCMM475LKXNBU7MUPWON"
+                ],
+                "User-Agent": [
+                  "Go-http-client/1.1"
+                ]
+              }
+            }
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "VirtualMachineInstance openai-agent-granite-3-3-8b-instruct-20251113-112350-62550185/paused-vm paused successfully"
+              }
+            ]
+          }
+        }
+      ],
+      "ResourceReads": null,
+      "PromptGets": null
+    }
+  }
+]

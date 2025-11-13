@@ -1,0 +1,86 @@
+[
+  {
+    "taskName": "pause-vm",
+    "taskPath": "/home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/tasks/pause-vm/pause-vm.yaml",
+    "taskPassed": true,
+    "taskOutput": "Configuring gemini with MCP server: http://localhost:40005/mcp (as mcp-eval-385636)\nYOLO mode is enabled. All tool calls will be automatically approved.\nThe virtual machine `paused-vm` in the `gemini-20251113-112350-aa89572b` namespace has been successfully paused.\n",
+    "difficulty": "medium",
+    "assertionResults": {
+      "toolsUsed": {
+        "passed": true
+      },
+      "minToolCalls": {
+        "passed": true
+      },
+      "maxToolCalls": {
+        "passed": true
+      }
+    },
+    "allAssertionsPassed": true,
+    "callHistory": {
+      "ToolCalls": [
+        {
+          "serverName": "kubernetes",
+          "timestamp": "2025-11-13T11:24:13.548062528Z",
+          "success": true,
+          "name": "vm_pause",
+          "request": {
+            "Session": {},
+            "Params": {
+              "name": "vm_pause",
+              "arguments": {
+                "name": "paused-vm",
+                "namespace": "gemini-20251113-112350-aa89572b"
+              }
+            },
+            "Extra": {
+              "TokenInfo": null,
+              "Header": {
+                "Accept": [
+                  "application/json, text/event-stream"
+                ],
+                "Accept-Encoding": [
+                  "gzip, deflate"
+                ],
+                "Accept-Language": [
+                  "*"
+                ],
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Content-Length": [
+                  "154"
+                ],
+                "Content-Type": [
+                  "application/json"
+                ],
+                "Mcp-Protocol-Version": [
+                  "2025-06-18"
+                ],
+                "Mcp-Session-Id": [
+                  "5Q4D55FEDNZS4PPAMT2CE33UVT"
+                ],
+                "Sec-Fetch-Mode": [
+                  "cors"
+                ],
+                "User-Agent": [
+                  "node"
+                ]
+              }
+            }
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "VirtualMachineInstance gemini-20251113-112350-aa89572b/paused-vm paused successfully"
+              }
+            ]
+          }
+        }
+      ],
+      "ResourceReads": null,
+      "PromptGets": null
+    }
+  }
+]

@@ -1,0 +1,60 @@
+========================================
+Starting evaluation run
+Date: Thu 13 Nov 11:23:50 GMT 2025
+Combinations: openai-agent/gemini-2.0-flash openai-agent/gemini-2.5-pro claude-code gemini openai-agent/Granite-3.3-8B-Instruct
+Total combinations: 5
+Output directory: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results
+========================================
+
+Running evaluations in parallel...
+[11:23:50] [openai-agent/gemini-2.0-flash] Starting with namespace openai-agent-gemini-2-0-flash-20251113-112350-b6928036...
+[11:23:50] [openai-agent/gemini-2.0-flash] Result file: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-openai-agent-gemini-2.0-flash-20251113-112350.log
+[11:23:50] [openai-agent/gemini-2.5-pro] Starting with namespace openai-agent-gemini-2-5-pro-20251113-112350-3efafc2f...
+[11:23:50] [openai-agent/gemini-2.5-pro] Result file: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-openai-agent-gemini-2.5-pro-20251113-112350.log
+[11:23:50] [claude-code] Starting with namespace claude-code-20251113-112350-ee85b8d0...
+[11:23:50] [claude-code] Result file: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-claude-code-20251113-112350.log
+[11:23:50] [claude-code] Command: gevals eval /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/claude-code/eval.yaml --run pause-vm
+[11:23:50] [gemini] Starting with namespace gemini-20251113-112350-aa89572b...
+[11:23:50] [claude-code] Starting evaluation at Thu 13 Nov 11:23:50 GMT 2025...
+[11:23:50] [gemini] Result file: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-gemini-20251113-112350.log
+[11:23:50] [gemini] Command: gevals eval /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/gemini/eval.yaml --run pause-vm
+[11:23:50] [openai-agent/Granite-3.3-8B-Instruct] Starting with namespace openai-agent-granite-3-3-8b-instruct-20251113-112350-62550185...
+[11:23:50] [gemini] Starting evaluation at Thu 13 Nov 11:23:50 GMT 2025...
+[11:23:50] [openai-agent/gemini-2.0-flash] Command: gevals eval /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/openai-agent/eval.yaml --run pause-vm
+Waiting for 5 remaining job(s) to complete...
+[11:23:50] [openai-agent/gemini-2.0-flash] Starting evaluation at Thu 13 Nov 11:23:50 GMT 2025...
+[11:23:50] [openai-agent/Granite-3.3-8B-Instruct] Result file: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-openai-agent-Granite-3.3-8B-Instruct-20251113-112350.log
+[11:23:50] [openai-agent/gemini-2.5-pro] Command: gevals eval /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/openai-agent/eval.yaml --run pause-vm
+[11:23:50] [openai-agent/gemini-2.5-pro] Starting evaluation at Thu 13 Nov 11:23:50 GMT 2025...
+[11:23:50] [openai-agent/Granite-3.3-8B-Instruct] Command: gevals eval /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/openai-agent/eval.yaml --run pause-vm
+[11:23:50] [openai-agent/Granite-3.3-8B-Instruct] Starting evaluation at Thu 13 Nov 11:23:50 GMT 2025...
+[11:24:17] [openai-agent/gemini-2.0-flash] SUCCESS: All tests passed
+[11:24:17] [openai-agent/gemini-2.0-flash] Duration: 0m 27s (27s total)
+[11:24:17] [openai-agent/gemini-2.0-flash] Generating view output from JSON...
+[11:24:17] [openai-agent/gemini-2.0-flash] Warning: Failed to generate view output from JSON
+[11:24:17] [openai-agent/gemini-2.0-flash] Moved output file to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-openai-agent-gemini-2.0-flash-20251113-112350-out.json
+[11:24:17] [openai-agent/gemini-2.0-flash] Moved view output to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-openai-agent-gemini-2.0-flash-20251113-112350-out.log
+[11:24:23] [claude-code] SUCCESS: All tests passed
+[11:24:23] [claude-code] Duration: 0m 33s (33s total)
+[11:24:23] [claude-code] Generating view output from JSON...
+[11:24:23] [claude-code] Warning: Failed to generate view output from JSON
+[11:24:23] [claude-code] Moved output file to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-claude-code-20251113-112350-out.json
+[11:24:23] [claude-code] Moved view output to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-claude-code-20251113-112350-out.log
+[11:24:26] [openai-agent/gemini-2.5-pro] SUCCESS: All tests passed
+[11:24:26] [openai-agent/Granite-3.3-8B-Instruct] SUCCESS: All tests passed
+[11:24:26] [openai-agent/gemini-2.5-pro] Duration: 0m 36s (36s total)
+[11:24:26] [openai-agent/Granite-3.3-8B-Instruct] Duration: 0m 36s (36s total)
+[11:24:26] [openai-agent/gemini-2.5-pro] Generating view output from JSON...
+[11:24:26] [openai-agent/Granite-3.3-8B-Instruct] Generating view output from JSON...
+[11:24:26] [openai-agent/gemini-2.5-pro] Warning: Failed to generate view output from JSON
+[11:24:26] [openai-agent/Granite-3.3-8B-Instruct] Warning: Failed to generate view output from JSON
+[11:24:26] [openai-agent/gemini-2.5-pro] Moved output file to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-openai-agent-gemini-2.5-pro-20251113-112350-out.json
+[11:24:26] [openai-agent/Granite-3.3-8B-Instruct] Moved view output to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-openai-agent-Granite-3.3-8B-Instruct-20251113-112350-out.log
+[11:24:28] [gemini] SUCCESS: All tests passed
+[11:24:28] [gemini] Duration: 0m 38s (38s total)
+[11:24:28] [gemini] Generating view output from JSON...
+[11:24:28] [gemini] Warning: Failed to generate view output from JSON
+[11:24:28] [gemini] Moved output file to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-gemini-20251113-112350-out.json
+[11:24:28] [gemini] Moved view output to: /home/lyarwood/redhat/devel/src/k8s/kubernetes-mcp-server/pkg/toolsets/kubevirt/tests/results/gevals-with-pause-tool-gemini-20251113-112350-out.log
+
+Calculating final results from test outputs...
