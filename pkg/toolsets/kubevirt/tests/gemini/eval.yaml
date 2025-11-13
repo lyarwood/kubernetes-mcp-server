@@ -9,6 +9,6 @@ config:
       assertions:
         toolsUsed:
           - server: kubernetes
-            toolPattern: "(vm_create|vm_troubleshoot|vm_start|vm_stop|resources_.*)"
+            toolPattern: "(vm_create|vm_delete|vm_troubleshoot|vm_start|vm_stop|vm_pause|resources_.*)"
         minToolCalls: 1
         maxToolCalls: 20
